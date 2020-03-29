@@ -1,0 +1,15 @@
+{
+  "name": "hello_react",
+  "version": "1.0.0",
+  "description": "Hello React",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "webpack": "webpack -d",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

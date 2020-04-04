@@ -9,7 +9,7 @@ RUN mkdir ~/.npm-global \
 RUN exec /bin/bash -l
 
 COPY ./src /home/node/src
-WORKDIR /home/node/src/money_book
+WORKDIR /home/node/src/jyanken
 
 RUN npm install
 

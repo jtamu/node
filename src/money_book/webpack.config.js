@@ -8,7 +8,7 @@ module.exports = {
   },
   devServer: {
     contentBase: __dirname + '/public',
-    port: 1080,
+    port: 1081,
     publicPath: '/js/'
   },
   devtool: "#inline-source-map",

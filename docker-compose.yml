@@ -7,10 +7,11 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - "1080:1080"
+      - "1081:1081"
     volumes:
       - ./src:/home/node/src
       - node_modules:/home/node/src/jyanken/node_modules
-    tty: true
+      - node_modules:/home/node/src/money_book/node_modules
 
 volumes:
   node_modules:

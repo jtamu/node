@@ -9,11 +9,13 @@ RUN mkdir ~/.npm-global \
 RUN exec /bin/bash -l
 
 COPY ./src /home/node/src
+
 WORKDIR /home/node/src/jyanken
-
 RUN npm install
-
-ENV PORT 1080
 EXPOSE 1080
+
+WORKDIR /home/node/src/money_book
+RUN npm install
+EXPOSE 1081
 
 CMD npm start

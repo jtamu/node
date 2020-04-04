@@ -28,6 +28,17 @@ class JyankenGamePage extends Component {
       </div>
     )
   }
+  componentDidMount() {
+    setTimeout(() => {this.pon(1)}, 1000)
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    const identical = nextState.human == this.state.human &&
+      nextState.computer == this.state.computer
+    if (identical) {
+      console.log("*identical*")
+    }
+    return !identical
+  }
 }
 
 const JyankenBox = (props) => {

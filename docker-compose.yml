@@ -9,7 +9,7 @@ services:
       - "1080:1080"
     volumes:
       - ./src:/home/node/src
-      - node_modules:/home/node/src/hello_react/node_modules
+      - node_modules:/home/node/src/money_book/node_modules
     tty: true
 
 volumes:

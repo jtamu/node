@@ -44,3 +44,4 @@
 - node_modules/.binにPATHを通さなくても、package.jsonに記載すれば実行できる
   - "scripts"に記載したコマンドは、`npm run $command`で実行できる
   - ただし、scriptsのstartに記載したものだけは特別に`npm start`で実行できる
+- Uncontrolled Componentの方がシンプルに実装できるが、リアルタイムに入力をチェックしたりしたい場合はControlled Componentのほうが良い

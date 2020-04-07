@@ -9,7 +9,7 @@ import MenuItem from 'material-ui/MenuItem'
 import RefreshIndicator from 'material-ui/RefreshIndicator'
 import WeatherIcon from 'material-ui/svg-icons/image/wb-sunny'
 import TemperatureIcon from 'material-ui/svg-icons/editor/show-chart'
-import { OpenWeatherMapKey } from './ApiKey'
+import { OpenWeatherMapKey } from './config'
 
 class WeatherPage extends Component {
   constructor(props) {

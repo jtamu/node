@@ -8,10 +8,12 @@ services:
     ports:
       - "1080:1080"
       - "1081:1081"
+      - "1082:1082"
     volumes:
       - ./src:/home/node/src
       - node_modules:/home/node/src/jyanken/node_modules
       - node_modules:/home/node/src/money_book/node_modules
+      - node_modules:/home/node/src/weather/node_modules
 
 volumes:
   node_modules:

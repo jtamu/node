@@ -40,6 +40,7 @@ exports.createPages = async ({ graphql, actions }) => {
       path: node.fields.slug,
       component: path.resolve(`./src/templates/blog-post.js`),
       context: {
+        // context内のものがページクエリの変数にアサインされるみたい
         slug: node.fields.slug,
       },
     })

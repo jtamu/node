@@ -33,7 +33,7 @@ export default function MyFiles({ data }) {
 }
 
 export const query = graphql`
-query MyQuery {
+query {
   allFile {
     edges {
       node {

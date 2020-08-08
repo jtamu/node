@@ -4,7 +4,21 @@ import { Link } from "gatsby"
 
 import { rhythm } from "../utils/typography"
 
+import { useStaticQuery, graphql } from "gatsby"
+
 export default function Layout({ children }) {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+  )
+
   return (
     <div
       css={css`
@@ -22,7 +36,7 @@ export default function Layout({ children }) {
             font-style: normal;
           `}
         >
-          Pandas Eating Lots
+          {data.site.siteMetadata.title}
         </h3>
       </Link>
       <Link

@@ -7,7 +7,7 @@
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: `Title from siteMetadata`,
+    title: `Pandas Eating Lots`,
   },
 
   plugins: [

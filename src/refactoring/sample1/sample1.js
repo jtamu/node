@@ -11,7 +11,7 @@ function statement(invoice, plays) {
   }).format
 
   for (let perf of invoice.performances) {
-    const play = plays[perf.playID];
+    const play = playFor(perf);
 
     let thisAmount = amountFor(perf, play);
 
@@ -25,20 +25,24 @@ function statement(invoice, plays) {
   return result;
 }
 
-function amountFor(perf, play) {
+function playFor(performance) {
+  return plays[performance.playID];
+}
+
+function amountFor(performance, play) {
   let thisAmount = 0;
   switch (play.type) {
     case "tragedy":
       thisAmount = 40000;
-      if (perf.audience > 30) {
-        thisAmount += 1000 * (perf.audience - 30);
+      if (performance.audience > 30) {
+        thisAmount += 1000 * (performance.audience - 30);
       }
       break;
     case "comedy":
-      if (perf.audience > 20) {
-        thisAmount += 10000 + 500 * (perf.audience - 20);
+      if (performance.audience > 20) {
+        thisAmount += 10000 + 500 * (performance.audience - 20);
       }
-      thisAmount += 300 * perf.audience;
+      thisAmount += 300 * performance.audience;
       break;
     default:
       throw new Error(`unknown type: ${play.type}`);

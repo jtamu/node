@@ -18,7 +18,7 @@ function enrichPerformance(performance) {
   return result;
 }
 
-function renderPlainText(data, invoice, plays) {
+function renderPlainText(data) {
   let result = `Statement for ${data.customer}\n`;
 
   for (let perf of data.performances) {

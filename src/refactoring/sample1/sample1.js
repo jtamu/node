@@ -1,13 +1,17 @@
 import { invoices } from './invoices.js'
 import { plays } from './plays.js'
 
-function statement(invoice, plays) {
+function statement(invoice) {
+  return renderPlainText(createStatementData(invoice));
+}
+
+function createStatementData(invoice) {
   const statementData = {};
   statementData.customer = invoice.customer;
   statementData.performances = invoice.performances.map(enrichPerformance);
   statementData.totalAmount = totalAmount(statementData);
   statementData.totalVolumeCredits = totalVolumeCredits(statementData);
-  return renderPlainText(statementData);
+  return statementData;
 }
 
 function enrichPerformance(performance) {

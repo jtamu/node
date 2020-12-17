@@ -12,6 +12,7 @@ function enrichPerformance(performance) {
   const result = Object.assign({}, performance);
   result.play = playFor(result);
   result.amount = amountFor(result);
+  result.volumeCredits = volumeCreditsFor(result);
   return result;
 }
 
@@ -34,7 +35,7 @@ function playFor(performance) {
 function totalVolumeCredits(data) {
   let volumeCredits = 0;
   for (let perf of data.performances) {
-    volumeCredits += volumeCreditsFor(perf);
+    volumeCredits += perf.volumeCredits;
   }
   return volumeCredits;
 }

@@ -4,8 +4,13 @@ import { plays } from './plays.js'
 function statement(invoice, plays) {
   const statementData = {};
   statementData.customer = invoice.customer;
-  statementData.performances = invoice.performances;
+  statementData.performances = invoice.performances.map(enrichPerformance);
   return renderPlainText(statementData, invoice, plays);
+}
+
+function enrichPerformance(performance) {
+  const result = Object.assign({}, performance);
+  return result;
 }
 
 function renderPlainText(data, invoice, plays) {

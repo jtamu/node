@@ -7,7 +7,7 @@ function statement(invoice, plays) {
   statementData.performances = invoice.performances.map(enrichPerformance);
   statementData.totalAmount = totalAmount(statementData);
   statementData.totalVolumeCredits = totalVolumeCredits(statementData);
-  return renderPlainText(statementData, invoice, plays);
+  return renderPlainText(statementData);
 }
 
 function enrichPerformance(performance) {

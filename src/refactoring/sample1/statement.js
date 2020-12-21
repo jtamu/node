@@ -35,20 +35,6 @@ function renderHtml(data) {
   return result;
 }
 
-function playFor(performance) {
-  return plays[performance.playID];
-}
-
-function totalVolumeCredits(data) {
-  return data.performances
-    .reduce((total, p) => total + p.volumeCredits, 0);
-}
-
-function totalAmount(data) {
-  return data.performances
-    .reduce((total, p) => total + p.amount, 0);
-}
-
 function usd(number) {
   return new Intl.NumberFormat("en-US", {
     style: "currency", currency: "USD",
@@ -57,5 +43,5 @@ function usd(number) {
 }
 
 invoices.forEach((invoice, i) => {
-  console.log(htmlStatement(invoice, plays))
+  console.log(statement(invoice, plays))
 });

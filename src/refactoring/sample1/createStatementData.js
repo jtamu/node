@@ -1,11 +1,6 @@
-import { invoices } from './invoices.js'
 import { plays } from './plays.js'
 
-function statement(invoice) {
-  return renderPlainText(createStatementData(invoice));
-}
-
-function createStatementData(invoice) {
+export default function createStatementData(invoice) {
   const statementData = {};
   statementData.customer = invoice.customer;
   statementData.performances = invoice.performances.map(enrichPerformance);
@@ -19,18 +14,6 @@ function enrichPerformance(performance) {
   result.play = playFor(result);
   result.amount = amountFor(result);
   result.volumeCredits = volumeCreditsFor(result);
-  return result;
-}
-
-function renderPlainText(data) {
-  let result = `Statement for ${data.customer}\n`;
-
-  for (let perf of data.performances) {
-    result += `  ${perf.play.name}: ${usd(perf.amount)} (${perf.audience} seats)\n`;
-  }
-
-  result += `Amount owed is ${usd(data.totalAmount)}\n`;
-  result += `You earned ${data.totalVolumeCredits} credits\n`;
   return result;
 }
 
@@ -55,13 +38,6 @@ function volumeCreditsFor(performance) {
   return volumeCredits;
 }
 
-function usd(number) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency", currency: "USD",
-    minimumFractionDigits: 2
-  }).format(number/100);
-}
-
 function amountFor(performance) {
   let thisAmount = 0;
   switch (performance.play.type) {
@@ -82,7 +58,3 @@ function amountFor(performance) {
   }
   return thisAmount;
 }
-
-invoices.forEach((invoice, i) => {
-  console.log(statement(invoice, plays))
-});

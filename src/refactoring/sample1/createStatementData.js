@@ -14,13 +14,34 @@ class performanceCalculator {
     this.performance = performance;
     this.play = play;
   }
+
+  get amount() {
+    let thisAmount = 0;
+    switch (this.play.type) {
+      case "tragedy":
+        thisAmount = 40000;
+        if (this.performance.audience > 30) {
+          thisAmount += 1000 * (this.performance.audience - 30);
+        }
+        break;
+      case "comedy":
+        if (this.performance.audience > 20) {
+          thisAmount += 10000 + 500 * (this.performance.audience - 20);
+        }
+        thisAmount += 300 * this.performance.audience;
+        break;
+      default:
+        throw new Error(`unknown type: ${this.play.type}`);
+    }
+    return thisAmount;
+  }
 }
 
 function enrichPerformance(performance) {
   const calculator = new performanceCalculator(performance, playFor(performance));
   const result = Object.assign({}, performance);
   result.play = calculator.play;
-  result.amount = amountFor(result);
+  result.amount = calculator.amount;
   result.volumeCredits = volumeCreditsFor(result);
   return result;
 }
@@ -44,25 +65,4 @@ function volumeCreditsFor(performance) {
   volumeCredits += Math.max(performance.audience - 30, 0);
   if ("comedy" == performance.play.type) volumeCredits += Math.floor(performance.audience / 5);
   return volumeCredits;
-}
-
-function amountFor(performance) {
-  let thisAmount = 0;
-  switch (performance.play.type) {
-    case "tragedy":
-      thisAmount = 40000;
-      if (performance.audience > 30) {
-        thisAmount += 1000 * (performance.audience - 30);
-      }
-      break;
-    case "comedy":
-      if (performance.audience > 20) {
-        thisAmount += 10000 + 500 * (performance.audience - 20);
-      }
-      thisAmount += 300 * performance.audience;
-      break;
-    default:
-      throw new Error(`unknown type: ${playFor(performance).type}`);
-  }
-  return thisAmount;
 }

@@ -44,8 +44,27 @@ class performanceCalculator {
   }
 }
 
+class TragedyCalculator extends performanceCalculator {
+}
+
+class ComedyCalculator extends performanceCalculator {
+}
+
+function createPerformanceCalculator(performance, play) {
+  switch (play.type) {
+    case "tragedy":
+      return new TragedyCalculator(performance, play);
+      break;
+    case "comedy":
+      return new ComedyCalculator(performance, play);
+      break;
+    default:
+      throw new Error(`未知の演劇の種類：${play.type}`)
+  }
+}
+
 function enrichPerformance(performance) {
-  const calculator = new performanceCalculator(performance, playFor(performance));
+  const calculator = createPerformanceCalculator(performance, playFor(performance));
   const result = Object.assign({}, performance);
   result.play = calculator.play;
   result.amount = calculator.amount;

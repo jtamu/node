@@ -9,9 +9,17 @@ export default function createStatementData(invoice) {
   return statementData;
 }
 
+class performanceCalculator {
+  constructor(performance, play) {
+    this.performance = performance;
+    this.play = play;
+  }
+}
+
 function enrichPerformance(performance) {
+  const calculator = new performanceCalculator(performance, playFor(performance));
   const result = Object.assign({}, performance);
-  result.play = playFor(result);
+  result.play = calculator.play;
   result.amount = amountFor(result);
   result.volumeCredits = volumeCreditsFor(result);
   return result;

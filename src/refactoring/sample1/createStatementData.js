@@ -29,22 +29,9 @@ class performanceCalculator {
 
 class TragedyCalculator extends performanceCalculator {
   get amount() {
-    let thisAmount = 0;
-    switch (this.play.type) {
-      case "tragedy":
-        thisAmount = 40000;
-        if (this.performance.audience > 30) {
-          thisAmount += 1000 * (this.performance.audience - 30);
-        }
-        break;
-      case "comedy":
-        if (this.performance.audience > 20) {
-          thisAmount += 10000 + 500 * (this.performance.audience - 20);
-        }
-        thisAmount += 300 * this.performance.audience;
-        break;
-      default:
-        throw new Error(`unknown type: ${this.play.type}`);
+    let thisAmount = 40000;
+    if (this.performance.audience > 30) {
+      thisAmount += 1000 * (this.performance.audience - 30);
     }
     return thisAmount;
   }
@@ -53,22 +40,10 @@ class TragedyCalculator extends performanceCalculator {
 class ComedyCalculator extends performanceCalculator {
   get amount() {
     let thisAmount = 0;
-    switch (this.play.type) {
-      case "tragedy":
-        thisAmount = 40000;
-        if (this.performance.audience > 30) {
-          thisAmount += 1000 * (this.performance.audience - 30);
-        }
-        break;
-      case "comedy":
-        if (this.performance.audience > 20) {
-          thisAmount += 10000 + 500 * (this.performance.audience - 20);
-        }
-        thisAmount += 300 * this.performance.audience;
-        break;
-      default:
-        throw new Error(`unknown type: ${this.play.type}`);
+    if (this.performance.audience > 20) {
+      thisAmount += 10000 + 500 * (this.performance.audience - 20);
     }
+    thisAmount += 300 * this.performance.audience;
     return thisAmount;
   }
 }
